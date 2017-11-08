@@ -1,0 +1,2 @@
+This website was a scholar project made in 2011 that introduced me to HTML and CSS. The webpage shows three World of Warcraft characters on sale, as an example of how a website could have been designed. Although not all the elements are nicely arranged in page, it was a pass at the time :)
+Please excuse the foreign language (Romanian).
