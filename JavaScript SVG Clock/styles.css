@@ -1,0 +1,43 @@
+#digi{
+	font-family: Tahoma;
+	height: 30px;
+	width: 70px;
+	padding-top: 199px;
+	padding-left: 168px;
+	font-size: 11px;
+	position:relative;
+	z-index: 1;
+}
+
+#sydney{
+	display: inline;
+	font-family: Tahoma;
+	font-size: 16px;
+	padding-left: 340px;
+	padding-top: 90px;
+	z-index:1000;
+}
+
+#new-york {
+	height: 50px;
+	width: 70px;
+	display: inline;
+	padding-left: 13px;
+	font-family: Tahoma;
+	font-size: 16px;
+	z-index:1000;
+}
+
+#tokyo{
+	display: inline;
+	height: 50px;
+    width: 70px;
+    padding-left: 13px;
+    font-family: Tahoma;
+    font-size: 16px;
+	z-index:1000;
+}
+
+#fill{
+	padding-top: 40px;
+}
