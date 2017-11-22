@@ -11,4 +11,4 @@ Changes made to the initial code:
 - added a legend to explain the controls;
 - added a counter for the remaining enemy tanks.
 
-Although my contribution to the original code was not very substantial, this project made me understand the fundamentals of JavaScript.
+Although my contribution to the original code was not very substantial, this project made me understand the fundamentals of JavaScript. To note is that this project remains as "work in progress".
