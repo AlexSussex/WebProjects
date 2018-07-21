@@ -126,6 +126,25 @@ function Crown(x, y) {
 
 }
 
+function Shield(x, y) {
+	Block.apply(this, [ x, y ]);
+	
+// creating a dom with the crown image, position it according to x and y, 
+// and set its size according to defined fixed grid width
+	 
+	this.createBlock = function() {
+		var shield = document.createElement('div');
+		document.getElementById(x + "" + y).appendChild(shield);
+		shield.className = "shield";
+		shield.style.position = "absolute";
+		shield.style.width = this.width + "px";
+		shield.style.height = this.height + "px";
+		shield.style.left = (this.x) * this.width + "px";
+		shield.style.top = (this.y) * this.height + "px";
+	}
+
+}
+
 // The Game map starts to be configured here
 
 var groundMap1 = [];
@@ -142,6 +161,7 @@ var WATER = 3;
 var PLATINUM = 4;
 var GROUND = 5;
 var CROWN = 6;
+var SHIELD = 7;
 
 // the map has 13 horizontal grids and 13 vertical grids
 var HORIZONTAL_GRID_COUNT = 13;
@@ -158,7 +178,7 @@ groundMap1 = [
 				GROUND, GROUND, WALL],
 		[ WALL, PLATINUM, PLATINUM, PLATINUM, WALL, PLATINUM, PLATINUM, PLATINUM, PLATINUM, PLATINUM,
 				WALL, PLATINUM, PLATINUM],
-		[ WALL, GROUND, GROUND, GROUND, WALL, WALL, GROUND, WALL, WALL, WALL,
+		[ WALL, GROUND, GROUND, GROUND, WALL, WALL, SHIELD, WALL, WALL, WALL,
 				GROUND, GROUND, GROUND],
 		[ WALL, WALL, WALL, GROUND, PLATINUM, WALL, GROUND, GROUND, WALL, GROUND,
 				PLATINUM, PLATINUM, WALL ],
@@ -300,7 +320,7 @@ maps.push(groundMap5);
 // This 2-dimensional array represents the inital positions of the tanks
 // The first array is the position of my tank and the rest represent the enemy tanks
  
-var tanksMap = [ [ 4, 12 ], [ 0, 0 ], [ 0, 12 ], [0, 3], [ 5, 6 ]];
+var tanksMap = [ [ 4, 12 ], [ 0, 0 ], [ 0, 12 ], [0, 3], [ 6, 6 ]];
 var lvl = parseInt(localStorage.getItem("levelValue"));
 
 function preprocessMap() {
@@ -388,6 +408,9 @@ function loadMap(element) {
 			case CROWN:
 				block = new Crown(i, j);
 				break
+			case SHIELD:
+				block = new Shield(i, j);
+				break
 			default:
 				break
 			}
@@ -440,6 +463,8 @@ Math.guid = function() {
 function Agent(x, y) {
 	this.guid = 0;// guid for the agent
 
+	this.life = 1;
+
 	this.x = x; // x position in number of tiles
 	this.y = y; // y position in number of tiles
 
@@ -462,9 +487,26 @@ function Agent(x, y) {
 		// tanks cannot move on these tile types
 		var tileType = maps[lvl][posy][posx];
 			if ((tileType == WATER) || (tileType == PLATINUM) || (tileType == WALL)
-					|| (tileType == CROWN)) {
+					|| (tileType == CROWN)){ 
 
 				return true;
+			}
+
+	};
+
+	this.checkShield = function(posx, posy) {
+		var lvl = parseInt(localStorage.getItem("levelValue")) - 1;
+		if (isNaN(lvl)) {
+			lvl=0;
+		}
+		// remove the shield
+		var tileType = maps[lvl][posy][posx];
+
+			if (tileType == SHIELD){
+				var shieldDiv = document.getElementById(posx + "" + posy);
+				shieldDiv.removeChild(shieldDiv.childNodes[0]);
+				maps[lvl][posy][posx] = GROUND;
+				this.life++;
 			}
 	};
 
@@ -486,6 +528,8 @@ function Agent(x, y) {
 			}
 			this.x = this.x + 1;
 			div.style.left = (this.x) * this.width + this.offsetX + "px";
+
+			this.checkShield(this.x, this.y)
 		}
 
 	};
@@ -503,6 +547,7 @@ function Agent(x, y) {
 			}
 			this.x = this.x - 1;
 			div.style.left = (this.x) * this.width + this.offsetX + "px";
+			this.checkShield(this.x, this.y);
 		}
 	};
 	// Moves the agent upwards with the previously defined speed. It won't move if it reaches the border
@@ -517,6 +562,7 @@ function Agent(x, y) {
 			}
 			this.y = this.y - 1;
 			div.style.top = (this.y) * this.height + this.offsetY + "px";
+			this.checkShield(this.x, this.y);
 
 		}
 	};
@@ -533,6 +579,7 @@ function Agent(x, y) {
 			}
 			this.y = this.y + 1;
 			div.style.top = (this.y) * this.height + this.offsetY + "px";
+			this.checkShield(this.x, this.y);
 
 		}
 	};
@@ -594,19 +641,30 @@ function Missile(x, y) {
 		}
 		if (this.owner == "enemytank") {
 			if ((myTank.x == posx) && (myTank.y == posy)) {
-				myTank.deRender();
-				gameOver();
-				return true;
+					if (myTank.life>1) {
+						myTank.life--;
+					}
+					else {
+						myTank.deRender();
+						gameOver();
+					}
+					return true;				
 			}
 		}
 		if (this.owner == "mytank") {
-			for ( var p = 0; p < enemyTanks.length; p++) {
+			for (var p = 0; p < enemyTanks.length; p++) {
 				if ((enemyTanks[p].x == posx) && (enemyTanks[p].y == posy)) {
-					enemyTanks[p].deRender();
-					enemyTanks.splice(p, 1);
+					console.log(enemyTanks[p].life);
+					if (enemyTanks[p].life>1) {
+						enemyTanks[p].life--;
+					}
+					else {
+						enemyTanks[p].deRender();
+						enemyTanks.splice(p, 1);
+					}
 					return true;
 				}
-			}
+			}	
 			return false;
 		}
 		return false;
@@ -793,7 +851,6 @@ MyTank.prototype.createTank = function() {
 		missiles.push(missile);
 	}
 }
-
 
 // creating an enemy tank with defined positions
 EnemyTank.prototype.createTank = function() {
