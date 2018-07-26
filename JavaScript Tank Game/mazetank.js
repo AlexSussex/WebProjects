@@ -178,7 +178,7 @@ groundMap1 = [
 				GROUND, GROUND, WALL],
 		[ WALL, PLATINUM, PLATINUM, PLATINUM, WALL, PLATINUM, PLATINUM, PLATINUM, PLATINUM, PLATINUM,
 				WALL, PLATINUM, PLATINUM],
-		[ WALL, GROUND, GROUND, GROUND, WALL, WALL, SHIELD, WALL, WALL, WALL,
+		[ WALL, GROUND, GROUND, GROUND, WALL, SHIELD, WALL, WALL, WALL, WALL,
 				GROUND, GROUND, GROUND],
 		[ WALL, WALL, WALL, GROUND, PLATINUM, WALL, GROUND, GROUND, WALL, GROUND,
 				PLATINUM, PLATINUM, WALL ],
@@ -188,9 +188,9 @@ groundMap1 = [
 				PLATINUM, WALL ],
 		[ GROUND, WALL, WALL, GROUND, GROUND, WALL, WALL, WALL, GROUND, GROUND,
 				WALL, PLATINUM, WALL ],
-		[ WATER, WALL, PLATINUM, GROUND, GRASS, GRASS, GRASS, GRASS, GRASS, WATER, WALL,
+		[ WATER, WALL, PLATINUM, SHIELD, GRASS, GRASS, GRASS, GRASS, GRASS, WATER, WALL,
 				GROUND, WALL],
-		[ WATER, GROUND, WALL, GROUND, GRASS, WALL, PLATINUM, WALL, GRASS, WALL,
+		[ WATER, GROUND, WALL, SHIELD, GRASS, WALL, PLATINUM, WALL, GRASS, WALL,
 				WALL, GROUND, WATER ],
 		[ WATER, WALL, PLATINUM, GROUND, GRASS, WALL, CROWN, WALL, GRASS, GROUND, GROUND,
 				WATER, WATER ], ];
@@ -216,13 +216,13 @@ groundMap2 = [
 				GROUND, GROUND, GROUND ],
 		[ GROUND, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL,
 				WALL, WALL ],
-		[ GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND,
+		[ GROUND, GROUND, GROUND, GROUND, SHIELD, GROUND, GROUND, GROUND, GROUND, GROUND,
 				GROUND, GROUND, GROUND ],
 		[ GROUND, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL,
 				WALL, WALL ],
-		[ GRASS, GRASS, GRASS, GRASS, GRASS, WALL, WALL, WALL, GRASS, GRASS, 
+		[ GRASS, GRASS, GRASS, GRASS, SHIELD, WALL, WALL, WALL, GRASS, GRASS, 
 				GRASS, GRASS, GRASS ],
-		[ GRASS, PLATINUM, GRASS, PLATINUM, GROUND, WALL, CROWN, WALL, WALL, WALL, WALL,
+		[ GRASS, PLATINUM, GRASS, PLATINUM, GRASS, WALL, CROWN, WALL, WALL, WALL, WALL,
 				WALL, WALL], ]; 
 
 maps.push(groundMap2);
@@ -507,6 +507,18 @@ function Agent(x, y) {
 				shieldDiv.removeChild(shieldDiv.childNodes[0]);
 				maps[lvl][posy][posx] = GROUND;
 				this.life++;
+				
+				if (this.guid == myTank.guid) {
+
+					document.getElementById(this.guid).style.backgroundImage="url(img/shieldedTank.png)";
+		
+				}
+				else {
+					document.getElementById(this.guid).style.backgroundImage="url(img/eShieldedTank.png)";
+				}
+			//	else {
+			//		this.img.src="../img/"   TODO
+			//	}
 			}
 	};
 
@@ -618,7 +630,7 @@ function Missile(x, y) {
 
 	this.checkCollision = function(posx, posy) {
 		var lvl = parseInt(localStorage.getItem("levelValue"))-1;
-		//console.log(localStorage.getItem("levelValue"));
+	
 		if (isNaN(lvl)) {
 			lvl=0;
 		}
@@ -642,7 +654,12 @@ function Missile(x, y) {
 		if (this.owner == "enemytank") {
 			if ((myTank.x == posx) && (myTank.y == posy)) {
 					if (myTank.life>1) {
+						if (myTank.life==2) {
+							document.getElementById(myTank.guid).style.backgroundImage="url(img/myTank.png)";
+				
+						}
 						myTank.life--;
+
 					}
 					else {
 						myTank.deRender();
@@ -654,9 +671,15 @@ function Missile(x, y) {
 		if (this.owner == "mytank") {
 			for (var p = 0; p < enemyTanks.length; p++) {
 				if ((enemyTanks[p].x == posx) && (enemyTanks[p].y == posy)) {
-					console.log(enemyTanks[p].life);
+					
 					if (enemyTanks[p].life>1) {
+						if (enemyTanks[p].life==2) {
+							document.getElementById(enemyTanks[p].guid).style.backgroundImage="url(img/eTank.png)";
+					
+						}
 						enemyTanks[p].life--;
+
+
 					}
 					else {
 						enemyTanks[p].deRender();
