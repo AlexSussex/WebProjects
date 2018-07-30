@@ -1,4 +1,3 @@
-
 //All layout classes extend from Block class as the parent class
  
 function Block(x, y) {
@@ -366,6 +365,10 @@ function loadTanks() {
 	// myTank is a global variable
 	myTank = new MyTank(myTankX, myTankY);
 	myTank.createTank();
+	if (parseInt(localStorage.getItem("lifesValue"))>1 && lvl>1) {
+		myTank.life=localStorage.getItem("lifesValue");
+	} 
+	else myTank.life = 1;
 
 	var enemyTank;
 
@@ -426,12 +429,15 @@ function levelUp(i){
 }
 
 function getLevel(){
-	if (parseInt(localStorage.getItem("levelValue"))!==null) {
+	if (parseInt(localStorage.getItem("levelValue"))!=null) {
 		levelUp(parseInt(localStorage.getItem("levelValue")));
+		//var lifeValue= parseInt(localStorage.getItem("lifesValue"));
+	    //MyTank.life=lifeValue;
 
 	} else if (isNaN(parseInt(localStorage.getItem("levelValue")))) {
 		lvlV=1;
 			localStorage.setItem("levelValue", lvlV);
+			
 		levelUp(levelValue);
 	}
 	else {
@@ -446,7 +452,9 @@ function displayLevel(){
 	if (isNaN(lvlD)){
 		lvlD=1;
 	}
-	document.getElementById('lvldisplay').innerHTML = "Level "+lvlD+"<br/>"+"Enemy tanks remaining: "+(tanksMap.length-1);
+	document.getElementById('lvldisplay').innerHTML = "Level: "+lvlD;
+	document.getElementById('tanksDisplay').innerHTML = "Tanks left: "+(tanksMap.length-1);
+	document.getElementById('shieldsDisplay').innerHTML = "Lives: "+ myTank.life;
 }
 
 // this guid function is from the book javascript web applications
@@ -463,7 +471,7 @@ Math.guid = function() {
 function Agent(x, y) {
 	this.guid = 0;// guid for the agent
 
-	this.life = 1;
+	this.life=1;
 
 	this.x = x; // x position in number of tiles
 	this.y = y; // y position in number of tiles
@@ -491,7 +499,18 @@ function Agent(x, y) {
 
 				return true;
 			}
+		
+		var x=0;
 
+		while (x<enemyTanks.length) {
+			if (enemyTanks[x].x==posx && enemyTanks[x].y==posy) {
+				return true;
+			}
+			x++;
+		}
+		if (myTank.x==posx && myTank.y==posy) {
+			return true;
+		}
 	};
 
 	this.checkShield = function(posx, posy) {
@@ -510,15 +529,12 @@ function Agent(x, y) {
 				
 				if (this.guid == myTank.guid) {
 
-					document.getElementById(this.guid).style.backgroundImage="url(img/shieldedTank.png)";
+					document.getElementById(this.guid).style.backgroundImage="url(img/tank-1-shield.gif)";
 		
 				}
 				else {
 					document.getElementById(this.guid).style.backgroundImage="url(img/eShieldedTank.png)";
 				}
-			//	else {
-			//		this.img.src="../img/"   TODO
-			//	}
 			}
 	};
 
@@ -529,7 +545,6 @@ function Agent(x, y) {
 	}
 
 	// Moves the agent to the right with the previously defined speed. It won't move if it reaches the border
-
 	this.moveRight = function() {
 		this.facing = "right";
 		var div = document.getElementById(this.guid);
@@ -636,7 +651,7 @@ function Missile(x, y) {
 		}
 		var tileType = maps[lvl][posy][posx];
 	
-		if ((tileType == WALL)) {
+		if (tileType == WALL) {
 			var section = document.getElementById(posx + "" + posy);
 			section.removeChild(section.childNodes[0]);
 			maps[lvl][posy][posx] = GROUND;
@@ -651,6 +666,7 @@ function Missile(x, y) {
 		if (tileType == PLATINUM) {
 			return true;
 		}
+
 		if (this.owner == "enemytank") {
 			if ((myTank.x == posx) && (myTank.y == posy)) {
 					if (myTank.life>1) {
@@ -690,7 +706,9 @@ function Missile(x, y) {
 			}	
 			return false;
 		}
+
 		return false;
+
 	};
 
 	this.move = function() {
@@ -699,6 +717,7 @@ function Missile(x, y) {
 		}
 		switch (this.direction) {
 		case "up":
+
 			var missile = document.getElementById(this.guid);
 			var missile_top = missile.style.top;
 			missile_top = missile_top.substring(0, missile_top.length - 2);
@@ -715,6 +734,7 @@ function Missile(x, y) {
 				return;
 			}
 			if (!this.checkCollision(gridY, gridX)) {
+
 				missile.style.top = top + "px";
 			} else {
 				this.explode();
@@ -738,7 +758,7 @@ function Missile(x, y) {
 				return;
 			}
 			if (!this.checkCollision(gridY, gridX)) {
-				missile.style.top = top + "px";
+				missile.style.top = top + "px";	
 			} else {
 				this.explode();
 			}
@@ -818,15 +838,19 @@ function Missile(x, y) {
 		switch (this.direction) {
 		case "up":
 			missile.style.backgroundPosition = "0px 0px";
+			
 			break
 		case "down":
 			missile.style.backgroundPosition = "0px -80px";
+			
 			break
 		case "right":
 			missile.style.backgroundPosition = "0px -40px";
+			
 			break
 		case "left":
 			missile.style.backgroundPosition = "0px -120px";
+			
 			break
 		default:
 			break
@@ -861,6 +885,7 @@ MyTank.prototype.createTank = function() {
 
 	container.appendChild(tank);
 	tank.id = this.guid;
+
 	tank.className = "allytank";
 	tank.style.position = "absolute";
 	tank.style.left = (this.x) * this.width + this.offsetX + "px";
@@ -931,6 +956,8 @@ function shootMissiles() {
 }
 
 function win() { 
+	localStorage.setItem("lifesValue", myTank.life);
+
 	if (isNaN(parseInt(localStorage.getItem("levelValue")))) {
 		lvlV=1;
 		localStorage.setItem("levelValue", lvlV);
@@ -944,6 +971,7 @@ function win() {
 		lvlV+=1;
 		localStorage.setItem("levelValue", lvlV);
 		alert("Well Done! You can play 1 more level!");
+
 	} else {
 		localStorage.setItem("levelValue", 2);
 	}   
@@ -980,9 +1008,13 @@ function keylistener(e) {
 
 	var arrows = [];
 	arrows['38'] = 'up';// up arrow has the keycode 38  
+	arrows['87'] = 'up';// W key
 	arrows['40'] = 'down';// down arrow has the keycode 40
+	arrows['83'] = 'down'; //S key
 	arrows['37'] = 'left';// left arrow has the keycode 37
+	arrows['65'] = 'left';// A key
 	arrows['39'] = 'right';// right arow has the keycode 39
+	arrows['68'] = 'right';// D key
 
 	move(arrows[keynum]);
 
