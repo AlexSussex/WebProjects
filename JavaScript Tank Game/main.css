@@ -104,22 +104,14 @@ th, td {
 }
 
 .shield {
-	background: url(img/shield1.gif);
+	background: url(img/shield.gif);
 	
 	/*https://giphy.com/gifs/shield-ErQvxgANM5MLC);
 	width: 40px;
 	height: 40px; */
 }
-.shieldedTank {
-	background: url(img/shieldedTank.png) no-repeat;
-	position: absolute;
-	width: 40px;
-	height: 40px;
-	overflow: hidden;
-	z-index: 101;
-}
 .allytank {
-	background: url(img/mytank.png) no-repeat;
+	background: url(img/myTank.gif) no-repeat; 
 	position: absolute;
 	width: 40px;
 	height: 40px;
@@ -129,7 +121,7 @@ th, td {
 	top: 240px;
 }
 .enemytank {
-	background: url(img/etank.png) no-repeat;
+	background: url(img/enemyTank.gif) no-repeat;
 	position: absolute;
 	width: 40px;
 	height: 40px;

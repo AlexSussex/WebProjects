@@ -209,7 +209,7 @@ groundMap2 = [
 				WATER, GROUND ],
 		[ WATER, GROUND, PLATINUM, WALL, WALL, GRASS, GROUND, GRASS, PLATINUM, WALL, GROUND,
 				WATER, GROUND ],
-		[ WATER, GROUND, PLATINUM, GROUND, WALL, GRASS, WALL, GRASS, PLATINUM, WALL, GROUND,
+		[ WATER, GROUND, PLATINUM, GROUND, WALL, GRASS, GRASS, GRASS, PLATINUM, WALL, GROUND,
 				WATER, GROUND ],
 		[ PLATINUM, WALL, PLATINUM, PLATINUM, WATER, WATER, WATER, WATER, PLATINUM, WALL,
 				GROUND, GROUND, GROUND ],
@@ -335,6 +335,37 @@ function preprocessMap() {
 	}
 }
 
+function changeTankImageByNumberOfShields(tank){
+	if (tank.guid == myTank.guid) {
+
+		switch (tank.life) {
+			case 0:
+				document.getElementById(tank.guid).style.backgroundImage="url(img/myTank.gif)";
+				break;
+			case 1: 
+				document.getElementById(tank.guid).style.backgroundImage="url(img/myTank1Shield.gif)";
+				break;
+			case 2: 
+				document.getElementById(tank.guid).style.backgroundImage="url(img/myTank2Shields.gif)";
+				break;
+			case 3: 
+				document.getElementById(tank.guid).style.backgroundImage="url(img/myTank3Shields.gif)";
+				break;
+		}	
+	}
+	else switch (tank.life) {
+			case 1:
+				document.getElementById(tank.guid).style.backgroundImage="url(img/eTank1ShieldOriginal.gif)";
+				break;
+			case 2:
+				document.getElementById(tank.guid).style.backgroundImage="url(img/eTank2Shields.gif)";
+				break;
+			case 3:
+				document.getElementById(tank.guid).style.backgroundImage="url(img/eTank3Shields.gif)";
+		}
+	
+}
+
 // method to initialize tanks placed on map
 function loadTanks() {
 
@@ -365,10 +396,12 @@ function loadTanks() {
 	// myTank is a global variable
 	myTank = new MyTank(myTankX, myTankY);
 	myTank.createTank();
-	if (parseInt(localStorage.getItem("lifesValue"))>1 && lvl>1) {
+	if (parseInt(localStorage.getItem("lifesValue"))>0 && lvl>1) {
 		myTank.life=localStorage.getItem("lifesValue");
 	} 
-	else myTank.life = 1;
+	else myTank.life = 0;
+
+	
 
 	var enemyTank;
 
@@ -378,7 +411,7 @@ function loadTanks() {
 		enemyTank.createTank();
 		enemyTanks.push(enemyTank);
 	}
-
+	changeTankImageByNumberOfShields(myTank);
 }
 
 // method to initialize game's ground map
@@ -431,6 +464,7 @@ function levelUp(i){
 function getLevel(){
 	if (parseInt(localStorage.getItem("levelValue"))!=null) {
 		levelUp(parseInt(localStorage.getItem("levelValue")));
+		
 		//var lifeValue= parseInt(localStorage.getItem("lifesValue"));
 	    //MyTank.life=lifeValue;
 
@@ -454,7 +488,10 @@ function displayLevel(){
 	}
 	document.getElementById('lvldisplay').innerHTML = "Level: "+lvlD;
 	document.getElementById('tanksDisplay').innerHTML = "Tanks left: "+(tanksMap.length-1);
-	document.getElementById('shieldsDisplay').innerHTML = "Lives: "+ myTank.life;
+	if (myTank.life<0) {
+		var shieldView = myTank.life+1;
+	}
+	document.getElementById('shieldsDisplay').innerHTML = "Shields: "+ myTank.life;
 }
 
 // this guid function is from the book javascript web applications
@@ -471,7 +508,7 @@ Math.guid = function() {
 function Agent(x, y) {
 	this.guid = 0;// guid for the agent
 
-	this.life=1;
+	this.life=0; 
 
 	this.x = x; // x position in number of tiles
 	this.y = y; // y position in number of tiles
@@ -526,15 +563,7 @@ function Agent(x, y) {
 				shieldDiv.removeChild(shieldDiv.childNodes[0]);
 				maps[lvl][posy][posx] = GROUND;
 				this.life++;
-				
-				if (this.guid == myTank.guid) {
-
-					document.getElementById(this.guid).style.backgroundImage="url(img/tank-1-shield.gif)";
-		
-				}
-				else {
-					document.getElementById(this.guid).style.backgroundImage="url(img/eShieldedTank.png)";
-				}
+				changeTankImageByNumberOfShields(this);
 			}
 	};
 
@@ -669,12 +698,9 @@ function Missile(x, y) {
 
 		if (this.owner == "enemytank") {
 			if ((myTank.x == posx) && (myTank.y == posy)) {
-					if (myTank.life>1) {
-						if (myTank.life==2) {
-							document.getElementById(myTank.guid).style.backgroundImage="url(img/myTank.png)";
-				
-						}
+					if (myTank.life>0) {
 						myTank.life--;
+						changeTankImageByNumberOfShields(myTank);
 
 					}
 					else {
@@ -688,9 +714,10 @@ function Missile(x, y) {
 			for (var p = 0; p < enemyTanks.length; p++) {
 				if ((enemyTanks[p].x == posx) && (enemyTanks[p].y == posy)) {
 					
-					if (enemyTanks[p].life>1) {
-						if (enemyTanks[p].life==2) {
-							document.getElementById(enemyTanks[p].guid).style.backgroundImage="url(img/eTank.png)";
+					if (enemyTanks[p].life>0) {
+
+						if (enemyTanks[p].life==1) {
+							document.getElementById(enemyTanks[p].guid).style.backgroundImage="url(img/enemyTank.gif)";
 					
 						}
 						enemyTanks[p].life--;
