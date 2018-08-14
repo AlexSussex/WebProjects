@@ -128,7 +128,7 @@ function Crown(x, y) {
 function Shield(x, y) {
 	Block.apply(this, [ x, y ]);
 	
-// creating a dom with the crown image, position it according to x and y, 
+// creating a dom with the shield image, position it according to x and y, 
 // and set its size according to defined fixed grid width
 	 
 	this.createBlock = function() {
@@ -341,15 +341,19 @@ function changeTankImageByNumberOfShields(tank){
 		switch (tank.life) {
 			case 0:
 				document.getElementById(tank.guid).style.backgroundImage="url(img/myTank.gif)";
+				console.log(2);
 				break;
 			case 1: 
 				document.getElementById(tank.guid).style.backgroundImage="url(img/myTank1Shield.gif)";
+				console.log(3);
 				break;
 			case 2: 
 				document.getElementById(tank.guid).style.backgroundImage="url(img/myTank2Shields.gif)";
+				console.log(4);
 				break;
 			case 3: 
 				document.getElementById(tank.guid).style.backgroundImage="url(img/myTank3Shields.gif)";
+				console.log(5);
 				break;
 		}	
 	}
@@ -364,6 +368,20 @@ function changeTankImageByNumberOfShields(tank){
 				document.getElementById(tank.guid).style.backgroundImage="url(img/eTank3Shields.gif)";
 		}
 	
+}
+
+var blast = document.createElement('audio');
+blast.src = 'blast.wav';
+
+function muteSounds() {
+	if(blast.muted==true) {
+		blast.muted=false;
+		localStorage.setItem("muted", false);
+	}
+	else {
+		blast.muted=true;
+		localStorage.setItem("muted", true);
+	}
 }
 
 // method to initialize tanks placed on map
@@ -396,8 +414,8 @@ function loadTanks() {
 	// myTank is a global variable
 	myTank = new MyTank(myTankX, myTankY);
 	myTank.createTank();
-	if (parseInt(localStorage.getItem("lifesValue"))>0 && lvl>1) {
-		myTank.life=localStorage.getItem("lifesValue");
+	if (parseInt(localStorage.getItem("lifesValue"))>0 && lvl>1) { 
+		myTank.life=parseInt(localStorage.getItem("lifesValue"));
 	} 
 	else myTank.life = 0;
 
@@ -454,28 +472,21 @@ function loadMap(element) {
 
 		}
 	}
-
-}
-
-function levelUp(i){
-	loadMap(i);
 }
 
 function getLevel(){
 	if (parseInt(localStorage.getItem("levelValue"))!=null) {
-		levelUp(parseInt(localStorage.getItem("levelValue")));
-		
-		//var lifeValue= parseInt(localStorage.getItem("lifesValue"));
-	    //MyTank.life=lifeValue;
+		loadMap(parseInt(localStorage.getItem("levelValue")));
 
 	} else if (isNaN(parseInt(localStorage.getItem("levelValue")))) {
 		lvlV=1;
-			localStorage.setItem("levelValue", lvlV);
-			
-		levelUp(levelValue);
+	
+		localStorage.setItem("levelValue", lvlV);
+		
+		loadMap(levelValue);
 	}
 	else {
-		levelUp(1);
+		loadMap(1);
 	}
 }
 
@@ -562,7 +573,9 @@ function Agent(x, y) {
 				var shieldDiv = document.getElementById(posx + "" + posy);
 				shieldDiv.removeChild(shieldDiv.childNodes[0]);
 				maps[lvl][posy][posx] = GROUND;
-				this.life++;
+				if (this.life<=2) {
+					this.life++;	
+				}				
 				changeTankImageByNumberOfShields(this);
 			}
 	};
@@ -650,6 +663,7 @@ function Agent(x, y) {
 
 // Missile class is a standalone class but it is referenced by all the tank classes
 
+
 function Missile(x, y) {
 	this.guid = Math.guid;// guid for the agent
 
@@ -683,6 +697,9 @@ function Missile(x, y) {
 		if (tileType == WALL) {
 			var section = document.getElementById(posx + "" + posy);
 			section.removeChild(section.childNodes[0]);
+			//if(Math.random()*10<9)
+				//maps[lvl][posy][posx] = SHIELD;
+			//else
 			maps[lvl][posy][posx] = GROUND;
 			return true;
 		}
@@ -849,7 +866,7 @@ function Missile(x, y) {
 		div.parentNode.removeChild(div);
 	}
 	this.explode = function() {
-		var blast=new Audio("blast.wav");
+		
 		blast.play();
 		this.removeMissile();
 	}
@@ -997,7 +1014,7 @@ function win() {
 		var lvlV=parseInt(localStorage.getItem("levelValue"));
 		lvlV+=1;
 		localStorage.setItem("levelValue", lvlV);
-		alert("Well Done! You can play 1 more level!");
+		//alert("Well Done! You can play 1 more level!");
 
 	} else {
 		localStorage.setItem("levelValue", 2);
@@ -1051,7 +1068,6 @@ function keylistener(e) {
 }
 
 // My tank's movement function
-
 function move(direction) {
 	switch (direction) {
 	case 'up':
@@ -1068,7 +1084,13 @@ function move(direction) {
 		break;
 	}
 }
+//checks if the "muted" variable in localStorage is true
+//and sets it to true for the other levels
 
+if (localStorage.getItem("muted")=="true") {
+	blast.muted=true;
+	document.getElementById("muteSlider").checked=true;
+}
 // Loads data and starts the game
 
 preprocessMap();

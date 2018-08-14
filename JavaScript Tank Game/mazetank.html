@@ -1,74 +1,69 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="UTF-8">
-	<link rel="stylesheet" type="text/css" href="main.css" />
-</head>
-<body>
-	<div id="main">
+	<head>
+  		<link rel="stylesheet" href="main.css">
+  		<link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+	</head>
+	<body>
 		<div id="mapsDiv"></div>
-		
-		<div id="info">
-			Protect the Crown!
-		</div>
-		
-		<div id="lvldisplay"></div>
-		<div id="tanksDisplay"></div>
-		<div id="shieldsDisplay"></div>
-
-		
-		<div id="keys">
-			
-			<img src="img/arrowkeystransp.png" width="70%">
-		</div>
-		<div id="space">
-			<img src="img/spacekeymfire.png" width="70%">
-		</div>
-
-		<div id="legend">
-			<table>
-				<tr>
-					<td>	<img src="img/crown.jpg"/> 
-					</td>
-					<td> is the Crown
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<img src="img/wall40.png"/>
-					</td>
-					<td> can be shot
-					</td>
-				</tr>
-			 	<tr>
-			 		<td>
-			 			<img src="img/grass40.png"/>
-			 		</td>
-			 		<td> tanks can move and shoot through
-			 		</td>
-			 	</tr>
-			 	<tr>
-			 		<td>
-			 			<img src="img/platinum40.png"/>
-			 		</td>
-			 		<td> tanks cannot move nor shoot through
-			 		</td>
-			 	</tr>
-				<tr>
-					<td><img src="img/water40.png"/>
-					</td>
-					<td> tanks cannot move but can shoot through
-					</td>
-				</tr>
-			</table>
-		</div>
-		
-	</div>
-	
-	<script type="text/javascript" src="mazetank.js">
-		
-	</script>
-
-</body>
-
+		<div class="game-info">
+  			<div id="lvldisplay"></div>
+			<div id="tanksDisplay"></div>
+			<div id="shieldsDisplay"></div>
+  		</div>
+  		<div class="controls">
+	  		<h1 class="heading">Controls<span>.</span></h1>
+	  		<h2>Move<span>.</span></h2>
+		  		<div class="keys">
+		  			<div></div>
+		  			<div class="key">W</div>
+		  			<div></div>
+		  			<div class="key">A</div>
+		  			<div class="key">S</div>
+		  			<div class="key">D</div>
+		  		</div>
+		  		<p>or<span>...</span></p>
+		  		<div class="keys">
+		  			<div></div>
+		  			<div class="key">&#8593</div>
+		  			<div></div>
+		  			<div class="key">&#8592</div>
+		  			<div class="key">&#8595</div>
+		  			<div class="key">&#8594</div>
+		  		</div>
+			<h2>Shoot<span>.</span></h2>
+			<div class="space">Space</div>
+			<div class="mute">
+				<h2 class="muteHeading">Mute<span>.</span></h2>
+				<label class="switch">
+				  	<input id="muteSlider" type="checkbox" onclick="muteSounds()">
+				  	<span class="slider round"></span>
+				</label>
+			</div>
+	  	</div>
+	  	<div class="legend">
+	  		<h1  class="heading">Key<span>.</span></h1>
+	  		<div class="legend-items">
+				<div class="legend-item">
+					<img src="img/crown.jpg"/> The Crown
+				</div>
+				<div class="legend-item">
+					<img src="img/wall40.png"/> Can be broken when shot
+				</div>
+				<div class="legend-item">
+					<img src="img/grass40.png"/> Can move and shoot through
+				</div>
+				<div class="legend-item">
+					<img src="img/platinum40.png"/> Cannot move or shoot through
+				</div>
+				<div class="legend-item">
+					<img src="img/water40.png"/> Cannot move but can shoot through
+				</div>
+				<div class="legend-item">
+					<img src="img/shield.gif"/> Pick up to gain one more health
+				</div>
+			</div>
+	  	</div>
+	<script src="mazetank.js" type="text/javascript"></script>
+	</body>
 </html>

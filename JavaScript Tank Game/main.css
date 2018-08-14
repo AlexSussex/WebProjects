@@ -1,92 +1,10 @@
 body {
 	background-image: url("img/grey-texture.jpg");
+	height: 100%; 
 	margin: 0px;
-	padding: 0px;
+	
 }
 
-#main {
-	background: white;
-	position: relative;
-
-}
-#info {
-	position: absolute;
-	left:625px;
- 	top:50px;
-	font-family: Georgia;
-	font-size: 45px;
-	text-shadow: 2px 2px #1a9fdd;
-}
-
-#lvldisplay{
-	border: 6px outset #319fb2;
-	position: absolute;
-	top: 560px;
-	width: 150px;
-	padding:10px;
-	font-family: Comic Sans MS;
-	font-size: 30px;
-	text-shadow: 1px 1px #1a9fdd; /*#dd751a;*/
-	text-align: center;
-}
-#tanksDisplay{
-	border: 6px outset #319fb2;
-	position: absolute;
-	top: 560px;
-	left:176px;
-	width: 182px;
-	padding:10px;
-	font-family: Comic Sans MS;
-	font-size: 30px;
-	text-shadow: 1px 1px #1a9fdd; /*#dd751a;*/
-	text-align: center;
-}
-
-#shieldsDisplay{
-	border: 6px outset #319fb2;
-	position: absolute;
-	top: 560px;
-	left:384px;
-	width: 144px;
-	padding:10px;
-	font-family: Comic Sans MS;
-	font-size: 30px;
-	text-shadow: 1px 1px #1a9fdd; /*#dd751a;*/
-	text-align: center;
-}
-#keys {
-	position: absolute;
-	left: 700px;
-	top: 120px;	
-}
-#space {
-	position:absolute;
-	top: 300px;
-	left: 660px;
-}
-
-#legend {
-	position: absolute;
-	left: 560px;
-	top: 360px;
-	padding: 20px;
-	font-family: Georgia;
-	font-size: 25px;
-	text-shadow: 0.5px 0.5px #1a9fdd;
-
-}
-
-th, td {
-	padding: 5px;
-}
-
-#mapsDiv {
-	position: absolute;
-	background: url("img/grey-texture.jpg");	/*background: #f4f1e6;/*#dfeadc;*/
-	border: 10px outset #319fb2;/*#C65D05;*/
-	width: 540px;
-	height: 540px;
-}
 .platinum {
 	background: url(img/platinum.png);
 }
@@ -105,10 +23,6 @@ th, td {
 
 .shield {
 	background: url(img/shield.gif);
-	
-	/*https://giphy.com/gifs/shield-ErQvxgANM5MLC);
-	width: 40px;
-	height: 40px; */
 }
 .allytank {
 	background: url(img/myTank.gif) no-repeat; 
@@ -134,4 +48,229 @@ th, td {
 	width: 40px;
 	height: 40px;
 	overflow: hidden;
+}
+
+.legend {
+	position: absolute;
+	top: 0px;
+	left: 850px;
+	height: 670px;
+	width: 350px;
+	background-color: #31708E;
+	border-radius: 10px;
+
+	font-family: 'Righteous', cursive;
+	font-size: 20px;
+	color: #FEFFFF;
+
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box; 		/* Opera/IE 8+ */
+
+    padding: 20px;
+}
+
+.legend-items {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-row-gap: 10px;
+	grid-column-gap: 10px;
+	margin-top: 20px;
+}
+
+.legend-item {
+	background-color: #8FC1E3;
+	border: 2px solid white;
+	border-radius: 10px;
+	text-align: center;
+
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box; 		/* Opera/IE 8+ */
+
+    padding: 10px;
+
+    height: 170px;
+    width: 150px;
+}
+
+.legend-item img {
+	display: block;
+	margin: 5px auto;
+}
+
+.heading {
+	font-size: 30px;
+	color: #FEFFFF;
+	margin: 0 auto;
+	text-align: center;
+}
+
+span {
+	color: #8FC1E3;
+}
+
+.controls {
+	position: absolute;
+	top: 0px;
+	left: 570px;
+	font-family: 'Righteous', cursive;
+	height: 670px;
+	width: 270px;
+	background-color: #31708E;
+	border-radius: 10px;
+	color: #FEFFFF;
+
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box; 		/* Opera/IE 8+ */
+
+    padding: 20px;
+}
+
+.controls p {
+	text-align: center
+}
+
+.keys {
+	display: grid;
+	grid-template-columns: 65px 65px 65px;
+	grid-template-rows: 1fr 1fr;
+	grid-row-gap: 5px;
+	grid-column-gap: 5px;
+
+	width: 200px;
+	margin: 0 auto;
+}
+
+.key {
+	border: 2px solid white;
+	border-radius: 10px;
+	text-align: center;
+	width: 60px;
+	height: 60px;
+
+	font-family: 'Righteous', cursive;
+	font-size: 25px;
+	color: #FEFFFF;
+	line-height: 60px;
+
+	background-color: #8FC1E3;
+}
+
+.space {
+	border: 2px solid white;
+	border-radius: 10px;
+	text-align: center;
+	width: 205px;
+	height: 60px;
+
+	font-family: 'Righteous', cursive;
+	font-size: 30px;
+	color: #FEFFFF;
+	line-height: 60px;
+
+	margin: 0 auto;
+
+	background-color: #8FC1E3;
+}
+
+#mapsDiv {
+	position: absolute;
+  	top: 0%;
+	border: 10px outset #5085A5;
+	border-radius: 10px;
+	width: 540px;
+	height: 540px;
+	background-image: url("img/sand.png");
+	margin-top: 0px;
+	margin-left: 0px;
+}
+
+.game-info {
+	position: absolute;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	column-gap: 10px;
+	width: 560px;
+	height: 100px;
+	text-align: center;
+	font-family: 'Righteous', cursive;
+	font-size: 25px;
+	color: #FEFFFF;
+	line-height: 100px;
+	top: 570px;
+	left: 0px;
+}
+
+.game-info div {
+	background-color: #31708E;
+	border-radius: 10px;
+}
+
+.mute {
+	margin-top: 20px;
+}
+
+.muteHeading {
+	display: inline;
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {display:none;}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #8FC1E3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
 }
