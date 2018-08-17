@@ -9,9 +9,9 @@ Changes made to the initial code:
 - added a "blasting" sound for when a tank is firing;
 - added more maps, designed to be increasingly more challenging;
 - increasing number of enemy tanks each level, for higher difficulty;
-- added a legend to explain the controls;
-- added a counter for the remaining enemy tanks.
-- added a mute button under the form of a slider to toggle mute on and off;
 - added a shield object that all tanks can collect, up to a maximum of 3;
 - added visual appearance for all tanks having shields;
+- added a legend to explain the controls;
+- added a counter for the remaining enemy tanks and shields held by the user-controlled tank.
+- added a mute button under the form of a slider to toggle mute on and off;
 - different background for each level;
