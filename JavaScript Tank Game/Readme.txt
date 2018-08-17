@@ -4,11 +4,14 @@ The initial game engine was taken from https://github.com/r-wang/Javascript-tank
 
 Changes made to the initial code:
 
-- visual aspect completely changed through the use of different images;
+- added more collision rules and removed a few bugs;
+- visual aspect completely changed through the use of different images ;
 - added a "blasting" sound for when a tank is firing;
 - added more maps, designed to be increasingly more challenging;
 - increasing number of enemy tanks each level, for higher difficulty;
 - added a legend to explain the controls;
 - added a counter for the remaining enemy tanks.
-
-Although my contribution to the original code was not very substantial, this project made me understand the fundamentals of JavaScript. To note is that this project remains as "work in progress".
+- added a mute button under the form of a slider to toggle mute on and off;
+- added a shield object that all tanks can collect, up to a maximum of 3;
+- added visual appearance for all tanks having shields;
+- different background for each level;
