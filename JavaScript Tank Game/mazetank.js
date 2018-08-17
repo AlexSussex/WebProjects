@@ -314,8 +314,6 @@ groundMap5= [
 
 maps.push(groundMap5);
 
-
-
 // This 2-dimensional array represents the inital positions of the tanks
 // The first array is the position of my tank and the rest represent the enemy tanks
  
@@ -364,12 +362,13 @@ function changeTankImageByNumberOfShields(tank){
 				break;
 			case 3:
 				document.getElementById(tank.guid).style.backgroundImage="url(img/eTank3Shields.gif)";
-		}
-	
+		}	
 }
 
 var blast = document.createElement('audio');
 blast.src = 'blast.wav';
+
+// function to mute the sound of the missile blast
 
 function muteSounds() {
 	if(blast.muted==true) {
@@ -906,7 +905,6 @@ function Missile(x, y) {
 		missile.style.left = (this.x) * this.width + this.offsetX + "px";
 		missile.style.top = (this.y) * this.height + this.offsetY + "px";
 	}
-
 }
 
 // MyTank class extending from the Agent parent class
@@ -991,6 +989,7 @@ EnemyTank.prototype.moveRandomly = function() {
 
 var missiles = [];
 setInterval("shootMissiles()", 30);
+
 function shootMissiles() {
 
 	for ( var k = 0; k < missiles.length; k++) {
@@ -1067,8 +1066,11 @@ function keylistener(e) {
 
 	move(arrows[keynum]);
 
-	if (keynum == 32) {// "Space" has the keycode 32 
-		myTank.fire();
+	// my tank fires when the space key is released
+	document.body.onkeyup = function(event) {
+		if (event.keyCode == 32) {
+			myTank.fire();
+		}
 	}
 }
 
