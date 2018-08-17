@@ -331,6 +331,23 @@ function preprocessMap() {
 			block.id = position;
 		}
 	}
+		switch (lvl) {
+		case 2:
+			document.getElementById("mapsDiv").style.backgroundImage="url(img/game-bg2.png)";
+			break;
+		case 3:
+			console.log(lvl);
+			document.getElementById("mapsDiv").style.backgroundImage="url(img/game-bg3.jpg)";
+			break;
+		case 4:
+			console.log(lvl);
+			document.getElementById("mapsDiv").style.backgroundImage="url(img/game-bg4.jpg)";
+			break;
+		case 5:
+			console.log(lvl);
+			document.getElementById("mapsDiv").style.backgroundImage="url(img/game-bg5.jpg)";
+			break;
+	}
 }
 // Function to change the appearance of the tank based
 // on the number of shields it has, up to a maximum of 3 shields 
@@ -468,6 +485,7 @@ function loadMap(element) {
 			block.createBlock();
 		}
 	}
+
 }
 // function to retrieve the level value and load the map for the next level
 
