@@ -35,7 +35,7 @@ body {
 	top: 240px;
 }
 .enemytank {
-	background: url(img/enemyTank.gif) no-repeat;
+	background: url(img/eTank.gif) no-repeat;
 	position: absolute;
 	width: 40px;
 	height: 40px;

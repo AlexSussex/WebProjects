@@ -372,7 +372,7 @@ function changeTankImageByNumberOfShields(tank){
 	}
 	else switch (tank.life) {
 			case 1:
-				document.getElementById(tank.guid).style.backgroundImage="url(img/eTank1ShieldOriginal.gif)";
+				document.getElementById(tank.guid).style.backgroundImage="url(img/eTank1Shield.gif)";
 				break;
 			case 2:
 				document.getElementById(tank.guid).style.backgroundImage="url(img/eTank2Shields.gif)";
