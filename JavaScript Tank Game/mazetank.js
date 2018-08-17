@@ -754,7 +754,7 @@ function Missile(x, y) {
 					if (enemyTanks[p].life>0) {
 
 						if (enemyTanks[p].life==1) {
-							document.getElementById(enemyTanks[p].guid).style.backgroundImage="url(img/enemyTank.gif)";
+							document.getElementById(enemyTanks[p].guid).style.backgroundImage="url(img/eTank.gif)";
 					
 						}
 						enemyTanks[p].life--;
