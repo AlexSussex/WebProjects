@@ -150,6 +150,12 @@ var groundMap1 = [];
 var groundMap2 = [];
 var groundMap3 = [];
 var groundMap4 = [];
+var groundMap5 = [];
+var groundMap6 = [];
+var groundMap7 = [];
+var groundMap8 = [];
+var groundMap9 = [];
+var groundMap10 = [];
 
 // a 2-dimensional array to store all the maps
 var maps=[];
@@ -194,7 +200,7 @@ groundMap1 = [
 		[ WATER, WALL, PLATINUM, GROUND, GRASS, WALL, CROWN, WALL, GRASS, GROUND, GROUND,
 				WATER, WATER ], ];
 
-maps.push(groundMap1);
+maps.push(groundMap1); 
 
 groundMap2 = [
 		[ GROUND, GROUND, GROUND, SHIELD, GROUND, GROUND, GROUND, GROUND, SHIELD, GROUND, GROUND,
@@ -314,6 +320,90 @@ groundMap5= [
 
 maps.push(groundMap5);
 
+groundMap6 = [
+			[ WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL ],
+			[ WALL, WALL, WALL, WALL, WALL, SHIELD, WALL, WALL, WALL, WALL, GRASS, GRASS, WALL ],
+			[ WALL, WALL, WALL, WALL, WALL, PLATINUM, PLATINUM, WALL, WALL, SHIELD, GRASS, GRASS, WALL ],
+			[ WALL, WALL, SHIELD, WALL, WALL, WALL, WALL, WALL, WALL, PLATINUM, PLATINUM, WALL, WALL ],
+			[ WALL, WALL, PLATINUM, PLATINUM, WALL, SHIELD, WALL, WALL, WALL, WALL, GRASS, GRASS, CROWN ],
+			[ WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, PLATINUM, PLATINUM ],
+			[ GRASS, GRASS, WATER, WATER, WATER, WATER, WATER, WATER, WALL, WALL, WALL, WALL, WALL ],
+			[ GRASS, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS, WALL, WALL, WALL, WALL, WALL, WALL ],
+			[ WALL, WALL, WALL, WALL, WALL, WALL, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND ],
+			[ WATER, WATER, WATER, WATER, WATER, GROUND, GROUND, WATER, WATER, WATER, WATER, WATER, WATER ],
+			[ GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND ],
+			[ GRASS, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS ],
+			[ SHIELD, SHIELD, SHIELD, SHIELD, SHIELD, SHIELD, SHIELD, SHIELD, SHIELD, SHIELD, SHIELD, SHIELD, SHIELD ] ];
+
+maps.push(groundMap6);
+
+groundMap7 = [
+			[ GRASS, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS ],
+			[ GRASS, CROWN, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS, CROWN, GRASS ],
+			[ GRASS, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS ],
+			[ GRASS, WALL, WALL, WALL, WALL, WALL, GROUND, WALL, WALL, WALL, WALL, WALL, GRASS ],
+			[ GRASS, WALL, WALL, WALL, GROUND, GROUND, GROUND, GROUND, WALL, WALL, WALL, WALL, GRASS ],
+			[ GRASS, WALL, WALL, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, WALL, WALL, GRASS ],
+			[ GRASS, WALL, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, WALL, GRASS ],
+			[ GRASS, WALL, GROUND, GROUND, SHIELD, SHIELD, SHIELD, SHIELD, GROUND, GROUND, GROUND, WALL, GRASS ],
+			[ GRASS, GROUND, GROUND, GROUND, GROUND, GROUND, WATER, GROUND, GROUND, GROUND, GROUND, GROUND, GRASS ],
+			[ GRASS, GROUND, GROUND, GROUND, WATER, WATER, WATER, WATER, WATER, GROUND, GROUND, GROUND, GRASS ],
+			[ GRASS, GROUND, GROUND, GROUND, GROUND, GROUND, WATER, GROUND, GROUND, GROUND, GROUND, GROUND, GRASS ],
+			[ GRASS, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS ],
+			[ GRASS, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS ] ];
+
+maps.push(groundMap7);
+
+groundMap8 = [
+			[ SHIELD, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, SHIELD ],
+			[ GROUND, PLATINUM, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, PLATINUM, GROUND ],
+			[ GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND ],
+			[ GROUND, GROUND, GROUND, PLATINUM, WALL, WALL, WALL, WALL, WALL, PLATINUM, GROUND, GROUND, GROUND ],
+			[ GROUND, GROUND, GROUND, GROUND, WALL, WALL, PLATINUM, WALL, WALL, GROUND, GROUND, GROUND, GROUND ],
+			[ GROUND, GROUND, GROUND, GROUND, WALL, GRASS, GRASS, GRASS, WALL, GROUND, GROUND, GROUND, GROUND ],
+			[ WALL, WALL, WALL, WALL, WALL, GRASS, CROWN, GRASS, WALL, WALL, WALL, WALL, WALL ],
+			[ GROUND, GROUND, GROUND, GROUND, WALL, GRASS, GRASS, GRASS, WALL, GROUND, GROUND, GROUND, GROUND ],
+			[ GROUND, GROUND, GROUND, GROUND, WALL, GROUND, PLATINUM, GROUND, WALL, GROUND, GROUND, GROUND, GROUND ],
+			[ GROUND, GROUND, GROUND, PLATINUM, WALL, WALL, WALL, WALL, WALL, PLATINUM, GROUND, GROUND, GROUND ],
+			[ GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND ],
+			[ GROUND, PLATINUM, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, PLATINUM, GROUND ],
+			[ SHIELD, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, SHIELD ], ];
+
+maps.push(groundMap8);
+
+groundMap9 = [
+			[ GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND],
+			[ SHIELD, SHIELD, SHIELD, SHIELD, SHIELD, SHIELD, SHIELD, SHIELD, SHIELD, SHIELD, SHIELD, SHIELD, SHIELD ],
+			[ WALL, GRASS, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, GRASS, WALL ],
+			[ GROUND, WATER, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, WATER, GROUND ],
+			[ GROUND, WATER, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, WATER, GROUND ],
+			[ GROUND, WATER, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, WATER, GROUND ],
+			[ GROUND, WATER, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, WATER, GROUND ],
+			[ GROUND, WATER, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, WATER, GROUND ],
+			[ GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND],
+			[ GROUND, GROUND, GROUND, GROUND, WALL, WALL, WALL, WALL, WALL, WALL, GROUND, GROUND, GROUND ],
+			[ PLATINUM, GROUND, WATER, GROUND, WATER, WATER, WATER, WATER, WATER, GROUND, WATER, GROUND, PLATINUM ],
+			[ GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND],
+			[ CROWN, SHIELD, PLATINUM, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, PLATINUM, SHIELD, CROWN ], ];
+
+maps.push(groundMap9);
+
+groundMap10 = [
+			[ GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND ],
+			[ GROUND, SHIELD, SHIELD, SHIELD, SHIELD, SHIELD, SHIELD, SHIELD, SHIELD, SHIELD, SHIELD, SHIELD, GROUND ],
+			[ GROUND, SHIELD, WALL, WALL, WALL, WALL, PLATINUM, WALL, WALL, WALL, WALL, SHIELD, GROUND ],
+			[ GROUND, SHIELD, WATER, WALL, WALL, GRASS, GRASS, GRASS, WALL, WALL, WATER, SHIELD, GROUND ],
+			[ GROUND, SHIELD, WALL, GROUND, PLATINUM, GRASS, CROWN, GRASS, PLATINUM, GROUND, GROUND, SHIELD, GROUND ],
+			[ GROUND, SHIELD, WATER, WALL, WALL, SHIELD, SHIELD, SHIELD, WALL, WALL, WATER, SHIELD, GROUND ],
+			[ GROUND, SHIELD, GROUND, GROUND, PLATINUM, SHIELD, CROWN, SHIELD, PLATINUM, GROUND, GROUND, SHIELD, GROUND ],
+			[ GROUND, SHIELD, WATER, WALL, WALL, SHIELD, SHIELD, SHIELD, WALL, WALL, WATER, SHIELD, GROUND ],
+			[ GROUND, SHIELD, GROUND, GROUND, PLATINUM, GRASS, CROWN, GRASS, PLATINUM, GROUND, GROUND, SHIELD, GROUND ],
+			[ GROUND, SHIELD, WATER, WALL, WALL, GRASS, GRASS, GRASS, WALL, WALL, WATER, SHIELD, GROUND ],
+			[ GROUND, SHIELD, GROUND, WALL, WALL, WALL, PLATINUM, WALL, WALL, WALL, WALL, SHIELD, GROUND ],
+			[ GROUND, SHIELD, SHIELD, SHIELD, SHIELD, SHIELD, SHIELD, SHIELD, SHIELD, SHIELD, SHIELD, SHIELD, GROUND ],
+			[ GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND, GROUND ] ];
+
+maps.push(groundMap10);
 // This 2-dimensional array represents the inital positions of the tanks
 // The first array is the position of my tank and the rest represent the enemy tanks
  
@@ -332,20 +422,41 @@ function preprocessMap() {
 		}
 	}
 		switch (lvl) {
+		
 		case 2:
 			document.getElementById("mapsDiv").style.backgroundImage="url(img/game-bg2.png)";
 			break;
+
 		case 3:
-			console.log(lvl);
+
 			document.getElementById("mapsDiv").style.backgroundImage="url(img/game-bg3.jpg)";
 			break;
+
 		case 4:
-			console.log(lvl);
 			document.getElementById("mapsDiv").style.backgroundImage="url(img/game-bg4.jpg)";
 			break;
+
 		case 5:
-			console.log(lvl);
 			document.getElementById("mapsDiv").style.backgroundImage="url(img/game-bg5.jpg)";
+			break;
+
+		case 6:
+			document.getElementById("mapsDiv").style.backgroundImage="url(img/game-bg6.png)";
+			break;
+
+		case 7:
+			document.getElementById("mapsDiv").style.backgroundImage="url(img/game-bg7.jpg)";
+			break;
+
+		case 8:
+			document.getElementById("mapsDiv").style.backgroundImage="url(img/game-bg8.jpg)";
+			break;
+
+		case 9:
+			document.getElementById("mapsDiv").style.backgroundImage="url(img/game-bg9.jpg)";
+			break;
+		case 10:
+			document.getElementById("mapsDiv").style.backgroundImage="url(img/game-bg10.jpg)";
 			break;
 	}
 }
@@ -402,7 +513,7 @@ function muteSounds() {
 
 function loadTanks() {
 
-		switch(lvl){
+		switch(lvl) {
 
 			case 2: 
 			tanksMap.push([4, 1], [7, 11] );
@@ -421,7 +532,30 @@ function loadTanks() {
 			tanksMap = [ [ 5, 6 ], [ 0, 1 ], [ 0, 2 ], [0, 10], [ 0, 11 ]];
 			tanksMap.push([1, 12], [1, 0], [2, 0], [2, 12], [10, 0],[11, 0], [11, 12], [12, 1], [12, 11] );
 			break;
-	}
+
+			case 6:
+			tanksMap = [ [ 11, 4 ], [ 12, 11 ], [ 12, 10 ], [ 12, 9 ], [ 12, 8 ], [ 12, 7 ], [ 12, 6 ], [ 12, 5 ], 
+			[ 12, 4 ], [ 12, 3 ], [ 12 , 2 ] , [ 12, 1 ], [ 12, 0 ]];
+			break;
+
+			case 7:
+			tanksMap = [ [ 10, 2 ], [ 11, 4 ], [ 11, 5 ], [ 11, 6 ], [ 11, 7 ], [ 11, 8 ], [ 12, 4 ], [ 12, 5 ], 
+			[ 12, 6 ], [ 12, 7 ], [ 12 , 8 ], [ 6, 0 ], [ 6, 12 ], [ 9, 3 ], [ 9, 9 ] ];
+			break;
+
+			case 8:
+			tanksMap = [ [ 5, 5 ], [ 2, 0 ], [ 2, 1 ], [ 2, 2 ], [ 2, 10 ], [ 2, 11 ], [ 2, 12 ], [ 10, 0 ], [ 10, 1 ], [ 10, 2], [ 10, 10 ], [ 10, 11 ], [ 10, 12 ] ];
+			break;
+
+			case 9:
+			tanksMap = [ [ 11, 11 ], [ 0, 0 ], [ 0, 1 ], [ 0, 2 ], [ 0, 3 ], [ 0, 4 ], [ 0, 5 ], [ 0, 6 ], [ 0, 7 ], [ 0, 8 ], [ 0, 9 ], [ 0, 10 ], [ 0, 11 ], [ 0, 12 ], [ 4, 4 ], [ 4, 5 ], [ 4, 6 ], [ 4, 7 ], [ 4, 8 ], [ 4, 9 ] ];
+			break;
+
+			case 10:
+			tanksMap = [ [ 5, 6 ], [ 0, 4 ], [ 0, 5 ], [ 0, 6 ], [ 0, 7 ], [ 0, 8 ], [ 0, 9 ], [ 0, 10 ], [ 0, 11 ], [ 0, 12 ], [ 12, 0],
+			[ 12, 1 ], [ 12, 2 ], [ 12, 2 ], [ 12, 3 ], [ 12, 4 ], [ 12, 5 ], [ 12, 6 ], [ 12, 7 ], [ 12, 8 ] ];
+			break;
+		}
 
 	var myTankX = tanksMap[0][0];
 	var myTankY = tanksMap[0][1];
