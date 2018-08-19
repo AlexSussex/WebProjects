@@ -482,6 +482,9 @@ function changeTankImageByNumberOfShields(tank){
 		}	
 	}
 	else switch (tank.life) {
+			case 0:
+				document.getElementById(tank.guid).style.backgroundImage="url(img/eTank.gif)";
+				break;
 			case 1:
 				document.getElementById(tank.guid).style.backgroundImage="url(img/eTank1Shield.gif)";
 				break;
@@ -892,6 +895,7 @@ function Missile(x, y) {
 					
 						}
 						enemyTanks[p].life--;
+						changeTankImageByNumberOfShields(enemyTanks[p]);
 					}
 					else {
 						enemyTanks[p].deRender();
