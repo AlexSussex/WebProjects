@@ -1,2 +1,0 @@
-This project was made in 2013 for the Web Design module during my undergraduate course. The project enhanced my skills in Photoshop, Illustrator, HTML, and CSS. In addition, a JavaScript slider has been used and some PHP for the contact form and basic calculations. Although not fully functional, working on this project was a good experience at the time.
-To note is that this webpage should be opened in Firefox through the index.php file as it has not been tested in all browsers. The language used in the page is Romanian.
