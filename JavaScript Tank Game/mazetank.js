@@ -1187,6 +1187,10 @@ function gameOver() {
 	alert("Game Over! The game will restart now");
 	window.location.reload();
 }
+// function to pause the game
+function pauseGame() {
+	alert("The game has been paused. Press OK to continue");
+}
 
 // global variables myTank and enemyTanks are initialized with load methods
  
@@ -1227,6 +1231,12 @@ function keylistener(e) {
 		if (event.keyCode == 32) {
 			myTank.fire();
 		}
+	}
+	// key event listener for the p key to pause the game
+	document.body.onkeydown = function (event) {
+		if (event.keyCode == 80) {
+			pauseGame();
+		}	
 	}
 }
 
