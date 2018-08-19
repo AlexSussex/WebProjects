@@ -855,9 +855,7 @@ function Missile(x, y) {
 		if (tileType == WALL) {
 			var section = document.getElementById(posx + "" + posy);
 			section.removeChild(section.childNodes[0]);
-			//if(Math.random()*10<9)
-				//maps[lvl][posy][posx] = SHIELD;
-			//else
+		
 			maps[lvl][posy][posx] = GROUND;
 			return true;
 		}
@@ -889,11 +887,6 @@ function Missile(x, y) {
 				if ((enemyTanks[p].x == posx) && (enemyTanks[p].y == posy)) {
 					
 					if (enemyTanks[p].life>0) {
-
-						if (enemyTanks[p].life==1) {
-							document.getElementById(enemyTanks[p].guid).style.backgroundImage="url(img/eTank.gif)";
-					
-						}
 						enemyTanks[p].life--;
 						changeTankImageByNumberOfShields(enemyTanks[p]);
 					}
